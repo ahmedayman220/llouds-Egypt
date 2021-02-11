@@ -31,7 +31,8 @@ let content_p = document.querySelector(".desc-h2-p-wallpaper p")
 let btns_wallpaper = document.querySelectorAll(".btn-wallpaper")
 let owl_dot = document.querySelectorAll(".owl-dot")
 let acordion = document.querySelectorAll(".what-we-do-accordion-desc ul li")
-let acordion_icon = document.querySelectorAll(".what-we-do-accordion-desc ul li h4 i")
+let acordion_icon = document.querySelectorAll(".what-we-do ul li h4 .fas")
+console.log(acordion_icon);
 let i = 0
 let x = 0
 
@@ -73,43 +74,44 @@ function wallpaper_SetInterval() {
 // ============================
 owl_dot[x].classList.add("active-hover")
 btns_wallpaper.forEach((btn) => {
-        btn.addEventListener("click", () => {
-            // change image source
-            if (btn.id == "next") {
-                if (i >= src_desc.length - 1) {
-                    i = -1
-                }
-                ++i
-                call_change_Wallper()
-            } else {
-                if (i <= 0) {
-
-                    i = src_desc.length
-                }
-                --i
-                call_change_Wallper()
+    btn.addEventListener("click", () => {
+        // change image source
+        if (btn.id == "next") {
+            if (i >= src_desc.length - 1) {
+                i = -1
             }
+            ++i
+            call_change_Wallper()
+        } else {
+            if (i <= 0) {
 
-            // changeClassList_active_hover
-            remove_class_on_all_items_with_forEach()
-            if (btn.id == "next") {
-                if (x >= owl_dot.length - 1) {
-                    x = -1
-                }
-                ++x
-                owl_dot[x].classList.add("active-hover")
-
-            } else {
-                if (x <= 0) {
-                    x = owl_dot.length
-                }
-                --x
-                owl_dot[x].classList.add("active-hover")
-
+                i = src_desc.length
             }
-        })
+            --i
+            call_change_Wallper()
+        }
+
+        // changeClassList_active_hover
+        remove_class_on_all_items_with_forEach()
+        if (btn.id == "next") {
+            if (x >= owl_dot.length - 1) {
+                x = -1
+            }
+            ++x
+            owl_dot[x].classList.add("active-hover")
+
+        } else {
+            if (x <= 0) {
+                x = owl_dot.length
+            }
+            --x
+            owl_dot[x].classList.add("active-hover")
+
+        }
     })
-    // set Interval
+})
+
+// set Interval
 setInterval(wallpaper_SetInterval, 10000)
 
 // acordion items "p"
@@ -118,11 +120,27 @@ acordion.forEach((item) => {
         let item_sipiling = item.nextElementSibling
         if (item_sipiling.classList == "active_toggler") {
             item_sipiling.classList.remove("active_toggler")
+            item.children[0].classList.add("fa-plus")
         } else {
+            acordion.forEach((item_icon) => {
+                item_icon.children[0].classList.add("fa-plus")
+            })
             acordion.forEach((clearClass) => {
                 clearClass.nextElementSibling.classList.remove("active_toggler")
             })
             item_sipiling.classList.toggle("active_toggler")
+            item.children[0].classList.add("fa-minus")
+
         }
     })
+})
+
+
+
+
+// three line  open navigation bar
+let open_navigation_bar = document.querySelector("#open_navigation_bar")
+let navigation_bar = document.querySelector(".navigation-bar")
+open_navigation_bar.addEventListener("click", () => {
+    navigation_bar.classList.toggle("navigation-bar_toggle")
 })

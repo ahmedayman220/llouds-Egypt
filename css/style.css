@@ -30,6 +30,10 @@ p {
     margin-bottom: 0;
 }
 
+h4 {
+    margin-bottom: 0;
+}
+
 ul {
     list-style-type: none;
     margin-bottom: 0;
@@ -87,6 +91,10 @@ main section {
     color: #fff;
 }
 
+.bar {
+    cursor: pointer;
+}
+
 
 /*=============================== */
 
@@ -108,116 +116,6 @@ main section {
 .hvr-float-shadow::before {
     background: radial-gradient(ellipse at center, rgb(255 255 255 / 35%) 0, rgb(255 255 255 / 0%) 80%);
 }
-
-
-/* 
-li.sprite-rss a:hover {
-    background-color: #fe9900 !important
-}
-
-li.sprite-google a:hover {
-    background-color: #db4a37 !important
-}
-
-li.sprite-delicious a:hover {
-    background-color: #3274d2 !important
-}
-
-li.sprite-yahoo a:hover {
-    background-color: #65106e !important
-}
-
-li.sprite-stumbleupon a:hover {
-    background-color: #ec4823 !important
-}
-
-li.sprite-skype a:hover {
-    background-color: #00a8e9 !important
-}
-
-li.sprite-behance a:hover {
-    background-color: #2d9ad2 !important
-}
-
-li.sprite-myspace a:hover {
-    background-color: #039 !important
-}
-
-li.sprite-lastfm a:hover {
-    background-color: #b70736 !important
-}
-
-li.sprite-linkedin a:hover {
-    background-color: #0274b3 !important
-}
-
-li.sprite-flickr a:hover {
-    background-color: #f3006f !important
-}
-
-li.sprite-deviantart a:hover {
-    background-color: #455548 !important
-}
-
-li.sprite-tumblr a:hover {
-    background-color: #35506b !important
-}
-
-li.sprite-vimeo a:hover {
-    background-color: #1bb6ec !important
-}
-
-li.sprite-youtube a:hover {
-    background-color: #ec2828 !important
-}
-
-li.sprite-twitter a:hover {
-    background-color: #00abf0 !important
-}
-
-li.sprite-facebook a:hover {
-    background-color: #47639e !important
-}
-
-li.sprite-pinterest a:hover {
-    background-color: #ca222f !important
-}
-
-li.sprite-instagram a:hover {
-    background-color: #405de6 !important
-}
-
-li.sprite-dribbble a:hover {
-    background-color: #df3e7b !important
-}
-
-li.sprite-github a:hover {
-    background-color: #000 !important
-}
-
-li.sprite-px a:hover {
-    background-color: #000 !important
-}
-
-li.sprite-foursquare a:hover {
-    background-color: #8cc540 !important
-}
-
-li.sprite-soundcloud a:hover {
-    background-color: #fe5419 !important
-}
-
-li.sprite-spotify a:hover {
-    background-color: #7cc110 !important
-}
-
-li.sprite-ebay a:hover {
-    background-color: #ffcb01 !important
-}
-
-.search-item a:hover {
-    background-color: #20204c;
-} */
 
 
 /*=============================== */
@@ -365,7 +263,6 @@ header {
 }
 
 .navigation_header {
-    display: flex;
     align-items: center;
     border-bottom: 1px solid rgba(204, 204, 204, .3);
 }
@@ -411,6 +308,128 @@ header {
     text-align: left;
     font-weight: 400;
     opacity: .7;
+}
+
+
+/* navigation */
+
+.navigation-bar {
+    box-shadow: 0px 2px 3px 0px #0000008c;
+    display: grid;
+    height: 0;
+    overflow: hidden;
+    padding: 0 40px;
+    transition: height .5s;
+}
+
+.navigation-bar_toggle {
+    height: 450px;
+    padding: 0 40px;
+}
+
+.certificates {
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #cccccc;
+}
+
+.certificates .navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.certificates .navbar h2 {
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.certificates ul {
+    padding: 10px;
+}
+
+
+/* navigation bar */
+
+.navigation_in_bar ul.ul_navigation li {
+    margin: 0 2px 4px 5px;
+    position: relative;
+}
+
+.navigation_in_bar ul.ul_navigation li a:not(.drop_down ul li a) {
+    background-color: #04043d;
+    color: #fff;
+    padding: 5px 15px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: margin .5s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navigation_in_bar ul.ul_navigation li svg {
+    color: #fff;
+}
+
+.navigation_in_bar ul.ul_navigation li a:not(.drop_down ul li a):hover {
+    margin-left: 15px;
+}
+
+.drop_down {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    display: flex;
+    background-color: #fff;
+    z-index: 99999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s;
+}
+
+.drop_down ul li {
+    color: #000;
+    padding: 2px 8px;
+    background-color: #51f2b8;
+    min-width: 165px;
+    margin: 7px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.drop_down ul li a {
+    color: #04043d;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.drop_down ul li:hover {
+    box-shadow: none;
+}
+
+.navigation_in_bar ul.ul_navigation li:hover .drop_parent {
+    opacity: 1;
+    visibility: visible;
+}
+
+.drop_child {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.navigation_in_bar ul.ul_navigation li .drop_parent li:hover .drop_child {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* about the company */
+
+.about_the_company {
+    padding: 40px 0;
+    height: 100%;
 }
 
 
@@ -462,7 +481,7 @@ section.wallpaper {
 
 .content-button-coursel_wall {
     position: absolute;
-    bottom: 0;
+    bottom: 2%;
     left: 2%;
 }
 
@@ -603,8 +622,11 @@ section.what-we-do {
 
 .what-we-do-accordion-desc ul li {
     overflow: hidden;
-    margin: 10px 0;
+    margin: 10px 0 30px;
     transition: height .5s;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }
 
 .what-we-do-accordion-desc ul li h4 {
@@ -618,7 +640,7 @@ section.what-we-do {
     cursor: pointer;
 }
 
-.what-we-do-accordion-desc ul li h4 svg {
+.what-we-do-accordion-desc ul li svg {
     margin-right: 5px;
     color: #51f2b8;
 }
@@ -1138,13 +1160,19 @@ footer {
         height: 50px;
         bottom: 1%;
     }
+    .certificates {
+        border-right: none;
+    }
+    .navigation-bar_toggle {
+        height: auto;
+        padding: 40px;
+    }
+    .navigation-bar {
+        box-shadow: none;
+    }
 }
 
 @media only screen and (max-width: 1100px) {
-    /* img {
-        width: 100%;
-        height: 360px;
-    } */
     .header-section-left {
         position: relative;
         left: 0;
