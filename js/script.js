@@ -141,6 +141,23 @@ acordion.forEach((item) => {
 // three line  open navigation bar
 let open_navigation_bar = document.querySelector("#open_navigation_bar")
 let navigation_bar = document.querySelector(".navigation-bar")
+let drop_down_item = document.querySelector("#drop_down_item")
+let drop_down = document.querySelector("#drop_down")
 open_navigation_bar.addEventListener("click", () => {
-    navigation_bar.classList.toggle("navigation-bar_toggle")
+    if (navigation_bar.scrollHeight == navigation_bar.clientHeight) {
+        navigation_bar.style.height = 0
+    } else {
+        navigation_bar.style.height = 87 + "vh"
+    }
+    drop_down.addEventListener("click", () => {
+        if (drop_down_item.scrollHeight == drop_down_item.clientHeight) {
+            drop_down_item.style.height = 0
+            console.log(drop_down);
+
+        } else {
+            drop_down_item.style.height = drop_down_item.scrollHeight + "px"
+        }
+
+    })
+
 })

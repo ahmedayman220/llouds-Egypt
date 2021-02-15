@@ -26,6 +26,10 @@ body {
     }
 }
 
+.form-inline {
+    flex-flow: nowrap;
+}
+
 p {
     margin-bottom: 0;
 }
@@ -319,12 +323,17 @@ header {
     height: 0;
     overflow: hidden;
     padding: 0 40px;
-    transition: height .5s;
+    transition: .5s;
+}
+
+.navigation-bar_toggle {
+    height: auto;
+    padding: 40px;
 }
 
 .navigation-bar_toggle {
     height: 450px;
-    padding: 0 40px;
+    padding: 40px;
 }
 
 .certificates {
@@ -348,12 +357,15 @@ header {
     padding: 10px;
 }
 
-
-/* navigation bar */
-
 .navigation_in_bar ul.ul_navigation li {
-    margin: 0 2px 4px 5px;
     position: relative;
+}
+
+.drop_down.drop_parent {
+    height: 370px;
+    overflow: hidden;
+    transition: height .5s;
+    height: 0;
 }
 
 .navigation_in_bar ul.ul_navigation li a:not(.drop_down ul li a) {
@@ -376,27 +388,18 @@ header {
     margin-left: 15px;
 }
 
-.drop_down {
-    position: absolute;
-    top: 0;
-    left: 100%;
-    display: flex;
-    background-color: #fff;
-    z-index: 99999;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .5s;
-}
-
 .drop_down ul li {
     color: #000;
-    padding: 2px 8px;
     background-color: #51f2b8;
     min-width: 165px;
-    margin: 7px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.drop_down ul li:not(.drop_child li) {
+    border-bottom: 1px solid #fff;
+    padding: 5px;
 }
 
 .drop_down ul li a {
@@ -407,21 +410,6 @@ header {
 
 .drop_down ul li:hover {
     box-shadow: none;
-}
-
-.navigation_in_bar ul.ul_navigation li:hover .drop_parent {
-    opacity: 1;
-    visibility: visible;
-}
-
-.drop_child {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.navigation_in_bar ul.ul_navigation li .drop_parent li:hover .drop_child {
-    opacity: 1;
-    visibility: visible;
 }
 
 
@@ -632,6 +620,9 @@ section.what-we-do {
 .what-we-do-accordion-desc ul li h4 {
     display: flex;
     align-items: center;
+    font-size: 16px;
+    color: #04043d;
+    font-weight: 600;
 }
 
 .what-we-do-accordion-desc ul li h4 span {
@@ -1162,10 +1153,6 @@ footer {
     }
     .certificates {
         border-right: none;
-    }
-    .navigation-bar_toggle {
-        height: auto;
-        padding: 40px;
     }
     .navigation-bar {
         box-shadow: none;
